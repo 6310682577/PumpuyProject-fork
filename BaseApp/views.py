@@ -5,6 +5,7 @@ from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
+
 def index(request):
     return render(request, 'main.html')
 
@@ -38,3 +39,10 @@ def intersection(request, intersection_id):
 
 def edit(request, intersection_id):
     return render(request, 'edit.html')
+
+def upload_file(request):
+    if request.method == 'POST':
+        uploaded_file = request.FILES['document']
+        print(uploaded_file.name)
+        print(uploaded_file.size)
+    return render(request, 'upload.html')
